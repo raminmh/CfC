@@ -1,3 +1,3 @@
-# Liquid Time Constant Neural Networks
+# Closed Form Solution of Neural ODEs
 
-`python example.py`
+
