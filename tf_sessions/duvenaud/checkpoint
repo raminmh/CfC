@@ -1,0 +1,2 @@
+model_checkpoint_path: "solution_ltc"
+all_model_checkpoint_paths: "solution_ltc"

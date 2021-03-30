@@ -1,0 +1,68 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 1 files
+Detected 7 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: ctrnn_model.py
+--------------------------------------------------------------------------------
+ctrnn_model.py:53:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+ctrnn_model.py:54:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+ctrnn_model.py:75:26: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+ctrnn_model.py:169:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+ctrnn_model.py:170:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+ctrnn_model.py:223:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+ctrnn_model.py:224:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+================================================================================
+Detailed log follows:
+
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'ctrnn_model.py'
+ outputting to 'foo3-upgraded.py'
+--------------------------------------------------------------------------------
+
+5:12: INFO: Renamed 'tf.nn.rnn_cell.RNNCell' to 'tf.compat.v1.nn.rnn_cell.RNNCell'
+51:66: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+51:66: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+53:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+53:12: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+54:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+54:12: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+72:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+73:17: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+73:47: INFO: Renamed 'tf.AUTO_REUSE' to 'tf.compat.v1.AUTO_REUSE'
+75:26: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+75:26: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+75:64: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+75:64: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+104:11: INFO: Renamed 'tf.nn.rnn_cell.RNNCell' to 'tf.compat.v1.nn.rnn_cell.RNNCell'
+167:66: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+167:66: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+169:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+169:12: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+170:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+170:12: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+188:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+189:17: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+189:47: INFO: Renamed 'tf.AUTO_REUSE' to 'tf.compat.v1.AUTO_REUSE'
+197:12: INFO: Renamed 'tf.nn.rnn_cell.RNNCell' to 'tf.compat.v1.nn.rnn_cell.RNNCell'
+221:66: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+221:66: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+223:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+223:12: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+224:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+224:12: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+237:12: INFO: Added keywords to args of function 'tf.reduce_sum'
+240:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+241:17: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+243:27: INFO: Renamed 'tf.layers.Dense' to 'tf.compat.v1.layers.Dense'
+248:26: INFO: Added keywords to args of function 'tf.reduce_sum'
+254:27: INFO: Renamed 'tf.layers.Dense' to 'tf.compat.v1.layers.Dense'
+264:25: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
