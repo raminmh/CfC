@@ -1,6 +1,7 @@
 # Closed-form Continuous-depth Models
 
-This archive is the code supplementary materials of the paper Closed-form Continuous-depth Models
+Closed-form Continuous-depth Models are powerful sequential neural information processing units. 
+https://arxiv.org/abs/2106.13898
 
 ## Requirements
 
