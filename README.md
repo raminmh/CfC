@@ -54,3 +54,11 @@ For downloading the Walker2d dataset of Lechner & Hasani 2020, run
 source download_dataset.sh
 ```
 
+## Reference
+
+```@article{hasani2021closed,
+  title={Closed-form Continuous-Depth Models},
+  author={Hasani, Ramin and Lechner, Mathias and Amini, Alexander and Liebenwein, Lucas and Tschaikowski, Max and Teschl, Gerald and Rus, Daniela},
+  journal={arXiv preprint arXiv:2106.13898},
+  year={2021}
+}```
