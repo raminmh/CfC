@@ -72,6 +72,8 @@ class CfcCell(nn.Module):
             backbone_activation = nn.ReLU
         elif self.hparams["backbone_activation"] == "tanh":
             backbone_activation = nn.Tanh
+        elif self.hparams["backbone_activation"] == "gelu":
+            backbone_activation = nn.GELU
         elif self.hparams["backbone_activation"] == "lecun":
             backbone_activation = LeCun
         else:
