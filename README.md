@@ -1,6 +1,6 @@
-# Closed-form Continuous-depth Models
+# Closed-form Continuous-time Models
 
-Closed-form Continuous-depth Models (CfCs) are powerful sequential neural information processing units. 
+Closed-form Continuous-time Neural Networks (CfCs) are powerful sequential neural information processing units. 
 
 Paper Open Access: https://www.nature.com/articles/s42256-022-00556-7
 
