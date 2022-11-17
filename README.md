@@ -1,7 +1,10 @@
 # Closed-form Continuous-depth Models
 
-Closed-form Continuous-depth Models are powerful sequential neural information processing units. 
-https://arxiv.org/abs/2106.13898
+Closed-form Continuous-depth Models (CfCs) are powerful sequential neural information processing units. 
+
+Paper Open Access: https://www.nature.com/articles/s42256-022-00556-7
+
+Arxiv: https://arxiv.org/abs/2106.13898
 
 ## Requirements
 
@@ -57,9 +60,11 @@ source download_dataset.sh
 
 ## Cite
 
-```@article{hasani2021closed,
-  title={Closed-form Continuous-Depth Models},
-  author={Hasani, Ramin and Lechner, Mathias and Amini, Alexander and Liebenwein, Lucas and Tschaikowski, Max and Teschl, Gerald and Rus, Daniela},
-  journal={arXiv preprint arXiv:2106.13898},
-  year={2021}
-}
+```@article{hasani_closed-form_2022,
+	title = {Closed-form continuous-time neural networks},
+	journal = {Nature Machine Intelligence},
+	author = {Hasani, Ramin and Lechner, Mathias and Amini, Alexander and Liebenwein, Lucas and Ray, Aaron and Tschaikowski, Max and Teschl, Gerald and Rus, Daniela},
+  issn = {2522-5839},
+	month = nov,
+	year = {2022},
+}```
