@@ -316,7 +316,7 @@ class PersonData:
                 if len(arr) < 6:
                     break
                 if arr[0] != current_person:
-                    # Enque and reset
+                    # Enqueue and reset
                     series_x = np.stack(series_x, axis=0)
                     series_t = np.stack(series_t, axis=0)
                     series_y = np.array(series_y, dtype=np.int32)
@@ -332,10 +332,10 @@ class PersonData:
                 # 100ms will be normalized to 1.0
                 millis_mapped_to_1 = 10.0
                 if last_millis is None:
-                    elasped_sec = 0.05
+                    elapsed_sec = 0.05
                 else:
-                    elasped_sec = float(millis - last_millis) / 1000.0
-                elasped = elasped_sec * 1000 / millis_mapped_to_1
+                    elapsed_sec = float(millis - last_millis) / 1000.0
+                elapsed = elapsed_sec * 1000 / millis_mapped_to_1
 
                 last_millis = millis
                 current_person = arr[0]
@@ -350,7 +350,7 @@ class PersonData:
 
                 feature_col = np.concatenate([feature_col_1, feature_col_2])
                 series_x.append(feature_col)
-                series_t.append(elasped)
+                series_t.append(elapsed)
                 series_y.append(label_col)
 
         return all_x, all_t, all_y
