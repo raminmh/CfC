@@ -222,6 +222,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.model not in model_zoo.keys():
-        raise ValueError(f"Unknown model '{args.model}', avilable: {list(model_zoo.keys())}")
+        raise ValueError(f"Unknown model '{args.model}', available: {list(model_zoo.keys())}")
 
     eval(model_zoo[args.model])
