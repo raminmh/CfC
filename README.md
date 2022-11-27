@@ -14,6 +14,7 @@ Arxiv: https://arxiv.org/abs/2106.13898
 - pytorch-lightning 1.3.0 or newer
 - scikit-learn 0.24.2 or newer
 - torchmetrics 0.10.3 or newer
+- matplotlib
 
 ## Module description
 
