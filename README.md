@@ -15,6 +15,7 @@ Arxiv: https://arxiv.org/abs/2106.13898
 - scikit-learn 0.24.2 or newer
 - torchmetrics 0.10.3 or newer
 - matplotlib
+- pandas
 
 ## Module description
 
