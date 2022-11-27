@@ -4,7 +4,7 @@ import os
 import torch
 import torch.nn as nn
 import pytorch_lightning as pl
-from pytorch_lightning.metrics.functional import accuracy, auroc
+from torchmetrics.functional import accuracy, auroc
 from torch_cfc import Cfc
 from pytorch_lightning.callbacks import ModelCheckpoint
 import torch.nn.functional
