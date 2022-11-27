@@ -16,6 +16,7 @@ import numpy as np
 import time
 
 from pytorch_lightning.callbacks import Callback
+import lightning_lite.utilities
 
 
 class SpeedCallback(Callback):
@@ -163,12 +164,20 @@ def eval(hparams, speed=False):
     if "CUDA_VISIBLE_DEVICES" in os.environ.keys():
         gpu_name = str(os.environ["CUDA_VISIBLE_DEVICES"])
 
-    trainer = pl.Trainer(
-        max_epochs=hparams["epochs"],
-        gradient_clip_val=hparams["clipnorm"],
-        gpus=1,
-        callbacks=[SpeedCallback()] if speed else None,
-    )
+    try:
+        trainer = pl.Trainer(
+            max_epochs=hparams["epochs"],
+            gradient_clip_val=hparams["clipnorm"],
+            gpus=1,
+            callbacks=[SpeedCallback()] if speed else None,
+        )
+    except lightning_lite.utilities.exceptions.MisconfigurationException:
+        trainer = pl.Trainer(
+            max_epochs=hparams["epochs"],
+            gradient_clip_val=hparams["clipnorm"],
+            callbacks=[SpeedCallback()] if speed else None,
+        )
+        
     trainer.fit(
         learner,
         train_loader,
