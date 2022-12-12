@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: CFC
+Version: 1.0.0
+Summary: An easy-to-use api for the closed-form continuous models in tensorflow and pytorch.
+Home-page: https://github.com/nightvision04/CfC
+Author: Daniel Scott
+Author-email: danscottlearns@gmail.com
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE

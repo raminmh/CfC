@@ -2,8 +2,8 @@ from setuptools import setup
 import setuptools
 
 setup(
-    name='CFC',
-    version='1.0.0',    
+    name='cfc_model',
+    version='1.0.2',    
     description='An easy-to-use api for the closed-form continuous models in tensorflow and pytorch.',
     url='https://github.com/nightvision04/CfC',
     author='Daniel Scott',
@@ -13,9 +13,10 @@ setup(
                       ],
     
     packages=setuptools.find_packages(),
+    include_package_data=True,
 
     classifiers=[
         'Programming Language :: Python :: 3.9',
     ],
-    py_modules=['CFC'],
+    py_modules=['cfc_model'],
 )
