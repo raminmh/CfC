@@ -4,18 +4,19 @@ import os
 import torch
 import torch.nn as nn
 import pytorch_lightning as pl
-from pytorch_lightning.metrics.functional import accuracy, auroc
-from torch_cfc import Cfc
+from torchmetrics.functional import accuracy, auroc
+from CFC.torch_cfc import Cfc
 from pytorch_lightning.callbacks import ModelCheckpoint
 import torch.nn.functional
 from sklearn.metrics import roc_auc_score
 import sys
 from pytorch_lightning.loggers import CSVLogger
-from duv_physionet import get_physio
+from CFC.duv.duv_physionet import get_physio
 import numpy as np
 import time
 
 from pytorch_lightning.callbacks import Callback
+import lightning_lite.utilities
 
 
 class SpeedCallback(Callback):
@@ -163,12 +164,20 @@ def eval(hparams, speed=False):
     if "CUDA_VISIBLE_DEVICES" in os.environ.keys():
         gpu_name = str(os.environ["CUDA_VISIBLE_DEVICES"])
 
-    trainer = pl.Trainer(
-        max_epochs=hparams["epochs"],
-        gradient_clip_val=hparams["clipnorm"],
-        gpus=1,
-        callbacks=[SpeedCallback()] if speed else None,
-    )
+    try:
+        trainer = pl.Trainer(
+            max_epochs=hparams["epochs"],
+            gradient_clip_val=hparams["clipnorm"],
+            gpus=1,
+            callbacks=[SpeedCallback()] if speed else None,
+        )
+    except lightning_lite.utilities.exceptions.MisconfigurationException:
+        trainer = pl.Trainer(
+            max_epochs=hparams["epochs"],
+            gradient_clip_val=hparams["clipnorm"],
+            callbacks=[SpeedCallback()] if speed else None,
+        )
+        
     trainer.fit(
         learner,
         train_loader,

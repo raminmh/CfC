@@ -8,11 +8,19 @@ Arxiv: https://arxiv.org/abs/2106.13898
 
 ## Requirements
 
+Use `conda` to install dependencies into a fresh environment and download dependencies:
+```
+conda env create --file environment.yml
+```
+
 - Python3.6 or newer
 - Tensorflow 2.4 or newer
 - PyTorch 1.8 or newer
 - pytorch-lightning 1.3.0 or newer
 - scikit-learn 0.24.2 or newer
+- torchmetrics 0.10.3 or newer
+- matplotlib
+- pandas
 
 ## Module description
 
@@ -26,6 +34,7 @@ Arxiv: https://arxiv.org/abs/2106.13898
 - ```duv_physionet.py``` and ```duv_utils.py``` Physionet dataset (same split) from Rubanova et al. (2019)
 
 ## Usage
+
 
 All training scripts except the following three flags
 

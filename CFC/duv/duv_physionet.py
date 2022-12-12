@@ -235,6 +235,12 @@ class PhysioNet(object):
         os.makedirs(self.raw_folder, exist_ok=True)
         os.makedirs(self.processed_folder, exist_ok=True)
 
+        # If windows, do not insert double backslash in path
+        
+        if os.name == 'nt':
+            self.outcome_urls = [url.replace('\','/') for url in self.outcome_urls]
+            self.urls = [url.replace('\', '/') for url in self.urls]
+        
         # Download outcome data
         for url in self.outcome_urls:
             filename = url.rpartition("/")[2]

@@ -13,6 +13,10 @@ class Walker2dImitationData:
         if not os.path.isfile("data/walker/rollout_000.npy"):
             os.system("wget https://pub.ist.ac.at/~mlechner/datasets/walker.zip")
             os.system("unzip walker.zip -d data/")
+        
+        if not os.path.exists('data/walker'):
+            os.mkdir('data/walker')
+            
         all_files = sorted(
             [
                 os.path.join("data/walker", d)
