@@ -4,8 +4,8 @@ import time
 
 import tensorflow as tf
 import argparse
-from irregular_sampled_datasets import ETSMnistData
-from tf_cfc import CfcCell, MixedCfcCell
+from CFC.adapters.irregular_sampled_datasets import ETSMnistData
+from CFC.tf_cfc import CfcCell, MixedCfcCell
 import numpy as np
 
 

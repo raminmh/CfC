@@ -1,13 +1,13 @@
 import os
 import subprocess
 
-from irregular_sampled_datasets import Walker2dImitationData
+from CFC.adapters.irregular_sampled_datasets import Walker2dImitationData
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 import tensorflow as tf
 import numpy as np
 import argparse
-from tf_cfc import CfcCell, MixedCfcCell, LTCCell
+from CFC.tf_cfc import CfcCell, MixedCfcCell, LTCCell
 import sys
 
 
