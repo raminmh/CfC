@@ -1,0 +1,9 @@
+{"backbone_activation": "gelu", 
+"backbone_dr": 0.0, 
+"forget_bias": 3.0, 
+"backbone_units": 128, 
+"backbone_layers": 1, 
+"weight_decay": 0, 
+"use_lstm": false, 
+"no_gate": false, 
+"minimal": false}
