@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from CFC.adapters.irregular_sampled_datasets import XORData
+from cfc_model.adapters.irregular_sampled_datasets import XORData
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 import tensorflow as tf

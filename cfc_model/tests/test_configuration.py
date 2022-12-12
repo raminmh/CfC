@@ -1,5 +1,5 @@
 import unittest
-import CFC.configuration as configuration
+import cfc_model.configuration as configuration
 
 class TestConfiguration(unittest.TestCase):
 

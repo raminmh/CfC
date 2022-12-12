@@ -5,13 +5,13 @@ import torch
 import torch.nn as nn
 import pytorch_lightning as pl
 from torchmetrics.functional import accuracy, auroc
-from CFC.torch_cfc import Cfc
+from cfc_model.torch_cfc import Cfc
 from pytorch_lightning.callbacks import ModelCheckpoint
 import torch.nn.functional
 from sklearn.metrics import roc_auc_score
 import sys
 from pytorch_lightning.loggers import CSVLogger
-from CFC.duv.duv_physionet import get_physio
+from cfc_model.duv.duv_physionet import get_physio
 import numpy as np
 import time
 

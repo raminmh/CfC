@@ -7,10 +7,10 @@ from unittest.loader import VALID_MODULE_NAME
 import torch
 import torch.nn as nn
 import pytorch_lightning as pl
-from CFC.duv.duv_person_activity import get_person_dataset
+from cfc_model.duv.duv_person_activity import get_person_dataset
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.callbacks import Callback
-from CFC.torch_cfc import Cfc
+from cfc_model.torch_cfc import Cfc
 
 import numpy as np
 import sys

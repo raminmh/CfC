@@ -3,8 +3,8 @@ import glob
 
 # Load all tensorflow configurations
 tf = {}
-for fname in glob.glob('CFC/config/*.json'):
-    name = fname.replace('CFC/config\\','').replace('.json','')
+for fname in glob.glob('cfc_model/config/*.json'):
+    name = fname.replace('cfc_model/config\\','').replace('.json','')
 
     with open(fname, 'r') as f:
         data = f.read()

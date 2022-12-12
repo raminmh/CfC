@@ -4,9 +4,9 @@ import time
 
 import tensorflow as tf
 import argparse
-from CFC.tf_cfc import CfcCell, MixedCfcCell
-import CFC.data_types as data_types
-import CFC.configuration
+from cfc_model.tf_cfc import CfcCell, MixedCfcCell
+import cfc_model.data_types as data_types
+import cfc_model.configuration
 import copy
 
 import numpy as np
@@ -30,7 +30,7 @@ def convert_xy_data(X, y, train_size=0.7):
         y (list, np.ndarray):   An 1D array containing the discrete labels associated with
                                 the series.
     Returns:
-        data (CFC.data_types.GenericData): A sequential structure of data expected in the
+        data (cfc_model.data_types.GenericData): A sequential structure of data expected in the
                                 cfc model.
     """
 
@@ -71,13 +71,13 @@ def convert_xy_data(X, y, train_size=0.7):
     return data
 
 def fit(X=None, y=None, data=None, config=None):
-    """Create and fit CFC model."""
+    """Create and fit cfc_model model."""
 
     assert isinstance(X, np.ndarray) and isinstance(y, (list, np.ndarray)) or isinstance(data, data_types.GenericData),\
         f'Expected X and y or data.'
 
     if isinstance(config, type(None)):
-        config = copy.copy(CFC.configuration.tf['default'])
+        config = copy.copy(cfc_model.configuration.tf['default'])
 
     args = Args()
     cell = CfcCell(units=args.size, hparams=config)
