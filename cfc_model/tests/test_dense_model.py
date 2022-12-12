@@ -1,6 +1,6 @@
 import unittest
-from CFC.data_types import GenericData
-import CFC.dense_model as dense_model
+from cfc_model.data_types import GenericData
+import cfc_model.dense_model as dense_model
 import numpy as np
 import math
 import random
@@ -71,7 +71,7 @@ class TestDenseModel(unittest.TestCase):
                                    [True, True, True, True]])
         data.test_y = np.array([3, 3, 2, 2])
 
-        # CFC Config
+        # cfc_model Config
         config = {
             "backbone_activation": "gelu",
             "backbone_dr": 0.0,

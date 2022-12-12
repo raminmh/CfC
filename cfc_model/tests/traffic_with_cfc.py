@@ -6,7 +6,7 @@ import subprocess
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 import tensorflow as tf
 import argparse
-from CFC.tf_cfc import CfcCell, MixedCfcCell, LTCCell, MixedLTCCell
+from cfc_model.tf_cfc import CfcCell, MixedCfcCell, LTCCell, MixedLTCCell
 import sys
 
 #os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Run on CPU

@@ -1,5 +1,5 @@
 import unittest
-import CFC.data_types as data_types
+import cfc_model.data_types as data_types
 
 class TestDataTypes(unittest.TestCase):
 
