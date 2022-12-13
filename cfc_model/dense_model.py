@@ -6,6 +6,7 @@ import tensorflow as tf
 import cfc_model.configuration
 import cfc_model.data_types as data_types
 from cfc_model.tf_cfc import CfcCell
+import copy
 
 
 class Args:
@@ -16,6 +17,7 @@ class Args:
         self.size = 64
         self.epochs = 200
         self.lr = 0.0005
+        self.batch_size = 64
 
 
 def convert_xy_data_predict(X):
@@ -127,7 +129,8 @@ class SequentialModel:
             raise data_types.MissingDataError
 
         res = self.model.predict(
-            x=(data.test_events, data.test_elapsed, data.test_mask)
+            x=(data.test_events, data.test_elapsed, data.test_mask),
+            verbose=False
         )
 
         return np.argmax(res)
@@ -143,7 +146,18 @@ class SequentialModel:
             config = copy.copy(cfc_model.configuration.tf['default'])
 
         args = Args()
-        cell = CfcCell(units=args.size, hparams=config)
+
+        # Defaults are only inserted if they are not found in the provided config.
+        for key in copy.copy(args.__dict__):
+            if key not in config:
+                config[key] = args.__dict__[key]
+
+        if config.get("use_ltc"):
+            cell = LTCCell(units=config["size"], ode_unfolds=6)
+        elif config.get("use_mixed", None) and config.get("use_mixed", None) != None:
+            cell = MixedCfcCell(units=config["size"], hparams=config)
+        else:
+            cell = CfcCell(units=config["size"], hparams=config)
 
         # Convert X, y data into standard data structure with fixed time interval between samples.
         if isinstance(data, type(None)) and isinstance(X, np.ndarray) and isinstance(y, (list, np.ndarray)):
@@ -156,7 +170,7 @@ class SequentialModel:
         mask_input = tf.keras.Input(shape=(data.pad_size,), dtype=tf.bool, name="mask")
 
         rnn = tf.keras.layers.RNN(cell, time_major=False, return_sequences=False)
-        dense_layer = tf.keras.layers.Dense(10)
+        dense_layer = tf.keras.layers.Dense(data.train_y.max()+1)
 
         output_states = rnn((pixel_input, time_input), mask=mask_input)
         y = dense_layer(output_states)
@@ -174,10 +188,9 @@ class SequentialModel:
         self.model.fit(
             x=(data.train_events, data.train_elapsed, data.train_mask),
             y=data.train_y,
-            batch_size=128,
-            epochs=args.epochs,
+            batch_size=config['batch_size'],
+            epochs=config['epochs'],
         )
 
         self.fitted = True
-
         return self
