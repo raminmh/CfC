@@ -29,7 +29,6 @@ class BackupCallback(tf.keras.callbacks.Callback):
         if self.best_loss is not None:
             self.model.set_weights(self.saved_weights)
 
-
 def eval(config, index_arg, verbose=0):
     data = Walker2dImitationData(seq_len=64)
 
