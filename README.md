@@ -11,6 +11,12 @@ Paper Open Access: https://www.nature.com/articles/s42256-022-00556-7
 
 Arxiv: https://arxiv.org/abs/2106.13898
 
+## Installation
+
+```
+pip install cfc-model
+```
+
 ## Requirements
 
 - Python3.6 or newer
