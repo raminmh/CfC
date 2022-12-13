@@ -5,7 +5,7 @@ import tensorflow as tf
 
 import cfc_model.configuration
 import cfc_model.data_types as data_types
-from cfc_model.tf_cfc import CfcCell
+from cfc_model.tf_cfc import CfcCell, MixedCfcCell, LTCCell
 import copy
 
 
@@ -154,7 +154,8 @@ class SequentialModel:
 
         if config.get("use_ltc"):
             cell = LTCCell(units=config["size"], ode_unfolds=6)
-        elif config.get("use_mixed", None) and config.get("use_mixed", None) != None:
+        elif config.get("use_mixed", None) and config.get("use_mixed", None) is not None:
+
             cell = MixedCfcCell(units=config["size"], hparams=config)
         else:
             cell = CfcCell(units=config["size"], hparams=config)
@@ -170,7 +171,7 @@ class SequentialModel:
         mask_input = tf.keras.Input(shape=(data.pad_size,), dtype=tf.bool, name="mask")
 
         rnn = tf.keras.layers.RNN(cell, time_major=False, return_sequences=False)
-        dense_layer = tf.keras.layers.Dense(data.train_y.max()+1)
+        dense_layer = tf.keras.layers.Dense(data.train_y.max() + 1)
 
         output_states = rnn((pixel_input, time_input), mask=mask_input)
         y = dense_layer(output_states)
