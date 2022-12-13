@@ -2,11 +2,14 @@ import json
 import glob
 
 # Load all tensorflow configurations
-tf = {}
-for fname in glob.glob('cfc_model/config/*.json'):
-    name = fname.replace('cfc_model/config\\','').replace('.json','')
-
-    with open(fname, 'r') as f:
-        data = f.read()
-        data = json.loads(data)
-        tf[name] = data
+tf = {
+    "default":{"backbone_activation": "gelu",
+    "backbone_dr": 0.0,
+    "forget_bias": 3.0,
+    "backbone_units": 128,
+    "backbone_layers": 1,
+    "weight_decay": 0,
+    "use_lstm": False,
+    "no_gate": False,
+    "minimal": False}
+}
