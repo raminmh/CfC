@@ -34,7 +34,7 @@ conda activate cfc
 
 ### Example
 ```
-from cfc_model.dense_model import SequentialModel
+from cfc_model.dense_models import SequentialModel
 X = np.array([[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 1, 0, 0],
               [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 0, 1, 0]])
 y = np.array([0, 0, 1, 1, 1, 0, 1, 1])
@@ -56,7 +56,7 @@ If none of these flags are provided, the full CfC model is used
 
 ```
 
-from cfc_model.dense_model import SequentialModel
+from cfc_model.dense_models import SequentialModel
 X = np.array([[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 1, 0, 0],
               [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 0, 1, 0]])
 y = np.array([0, 0, 1, 1, 1, 0, 1, 1])
