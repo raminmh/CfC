@@ -9,13 +9,11 @@ long_description = (d / "README.md").read_text()
 setup(
     name='cfc_model',
     version='1.0.5',    
-    description='An easy-to-use api for the closed-form continuous models in tensorflow and pytorch.',
+    description='An easy-to-use api for closed-form continuous models in tensorflow.',
     url='https://github.com/nightvision04/CfC',
     author='Daniel Scott',
     author_email='danscottlearns@gmail.com',
-    install_requires=['pandas',
-                      'numpy',                     
-                      ],
+    install_requires=['numpy', 'tensorflow'],
     
     packages=setuptools.find_packages(),
     include_package_data=True,
