@@ -30,39 +30,10 @@ class TestDenseModel(unittest.TestCase):
 
     def test_fit_predict(self):
 
-        # Assumes an event size of 4, and a time
-        # Label: Do the events sum to 3?
-        # Only dense data
-        data = GenericData()
-
-        data.pad_size = 4
-        data.train_elapsed = np.array([[.25, .5, .75, 1],
-                                       [.25, .5, .75, 1],
-                                       [.25, .5, .75, 1],
-                                       [.25, .5, .75, 1]])
-        data.train_events = np.array([[1, 1, 1, 0],
-                                      [1, 1, 0, 1],
-                                      [1, 0, 0, 1],
-                                      [1, 1, 0, 0]])
-        data.train_mask = np.array([[True, True, True, True],
-                                    [True, True, True, True],
-                                    [True, True, True, True],
-                                    [True, True, True, True]])
-        data.train_y = np.array([3, 3, 2, 2])
-
-        data.test_elapsed = np.array([[.25, .5, .75, 1],
-                                      [.25, .5, .75, 1],
-                                      [.25, .5, .75, 1],
-                                      [.25, .5, .75, 1]])
-        data.test_events = np.array([[1, 0, 1, 0],
-                                     [1, 1, 0, 1],
-                                     [1, 0, 0, 1],
-                                     [1, 0, 1, 0]])
-        data.test_mask = np.array([[True, True, True, True],
-                                   [True, True, True, True],
-                                   [True, True, True, True],
-                                   [True, True, True, True]])
-        data.test_y = np.array([3, 3, 2, 2])
+        # Problem: Do the events sum to 2?
+        X = np.array([[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 1, 0, 0],
+                      [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 0, 1, 0]])
+        y = np.array([0, 0, 1, 1, 1, 0, 1, 1])
 
         # cfc_model Config
         config = {
@@ -78,8 +49,8 @@ class TestDenseModel(unittest.TestCase):
         }
 
         model = SequentialModel()
-        model.fit(data=data, config=config)
+        model.fit(X, y, config=config)
 
         # Predict out of sample
-        assert model.predict([1, 1, 0, 1]) == 3
-        assert model.predict([1, 0, 0, 1]) == 2
+        assert model.predict([1, 1, 0, 1]) == 0
+        assert model.predict([1, 0, 0, 1]) == 1
