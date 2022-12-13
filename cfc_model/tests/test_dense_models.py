@@ -1,7 +1,7 @@
 import unittest
 from cfc_model.data_types import GenericData
-import cfc_model.dense_model as dense_model
-from cfc_model.dense_model import SequentialModel
+import cfc_model.dense_models as dense_model
+from cfc_model.dense_models import SequentialModel
 import numpy as np
 import math
 import random

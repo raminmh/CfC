@@ -1,3 +1,8 @@
+![PyPI 📦   ](https://github.com/nightvision04/CfC/workflows/PyPI%20%F0%9F%93%A6%20%20%20/badge.svg?branch=main)
+![PyTests](https://github.com/nightvision04/CfC/lppls/workflows/PyTests/badge.svg?branch=main)
+[![Downloads](https://pepy.tech/badge/cfc-model)](https://pepy.tech/project/cfc-model)
+
+
 # Closed-form Continuous-time Models
 
 Closed-form Continuous-time Neural Networks (CfCs) are powerful sequential neural information processing units. 
