@@ -26,7 +26,23 @@ class TestDenseModel(unittest.TestCase):
             [[ii * math.sin((ii + i) / 10) + (random.random() - 0.5) * 20 for i in range(10)] for ii in range(100)])
         y = np.array([int(math.cos((ii + 11) / 10) >= 0) for ii in range(100)])
         model = SequentialModel()
-        model.fit(X, y)
+        model.fit(X, y, config={'epochs':5})
+
+    def test_sine_predict_use_mixed(self):
+        # Predict sine direction, pad_size = 10
+        X = np.array(
+            [[ii * math.sin((ii + i) / 10) + (random.random() - 0.5) * 20 for i in range(10)] for ii in range(100)])
+        y = np.array([int(math.cos((ii + 11) / 10) >= 0) for ii in range(100)])
+        model = SequentialModel()
+        model.fit(X, y, config={'use_mixed':True, 'epochs':5})
+
+    def test_sine_predict_use_ltc(self):
+        # Predict sine direction, pad_size = 10
+        X = np.array(
+            [[ii * math.sin((ii + i) / 10) + (random.random() - 0.5) * 20 for i in range(10)] for ii in range(100)])
+        y = np.array([int(math.cos((ii + 11) / 10) >= 0) for ii in range(100)])
+        model = SequentialModel()
+        model.fit(X, y, config={'use_ltc':True, 'epochs':5})
 
     def test_fit_predict(self):
 
@@ -46,6 +62,7 @@ class TestDenseModel(unittest.TestCase):
             "use_lstm": False,
             "no_gate": False,
             "minimal": False,
+            "batch_size": len(X)
         }
 
         model = SequentialModel()

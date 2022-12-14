@@ -14,11 +14,19 @@ class Args:
 
     def __init__(self):
         self.model = 'cfc'
+        self.backbone_activation = 'gelu'
+        self.backbone_layers = 1
+        self.backbone_units = 128
+        self.backbone_dr = 0.0
+        self.forget_bias = 3
+        self.weight_decay = 0
         self.size = 64
         self.epochs = 200
         self.lr = 0.0005
         self.batch_size = 64
-
+        self.use_lstm = False
+        self.no_gate = False
+        self.minimal = False
 
 def convert_xy_data_predict(X):
     """
