@@ -13,8 +13,7 @@ setup(
     author='Daniel Scott',
     author_email='danscottlearns@gmail.com',
     install_requires=['pandas',
-                      'numpy',
-                      ],
+                      'numpy'],
     long_description=long_description,
     long_description_content_type='text/markdown',
     
