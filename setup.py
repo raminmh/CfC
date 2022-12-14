@@ -3,7 +3,7 @@ import setuptools
 
 setup(
     name='cfc_model',
-    version='1.0.7',    
+    version='1.0.8',    
     description='An easy-to-use api for the closed-form continuous models in tensorflow',
     url='https://github.com/nightvision04/CfC',
     author='Daniel Scott',
