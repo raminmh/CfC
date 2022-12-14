@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     
 setup(
     name='cfc_model',
-    version='1.1.0',    
+    version='1.1.1',    
     description='An easy-to-use api for the closed-form continuous models in tensorflow',
     url='https://github.com/nightvision04/CfC',
     author='Daniel Scott',
