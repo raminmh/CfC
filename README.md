@@ -43,6 +43,8 @@ model.fit(X, y)
 y_pred = model.predict([1, 1, 0, 1]) # y_pred equals 0
 ```
 
+### Configuration
+
 The following configuration states can be used
 
 - ```no_gate``` Runs the CfC without the (1-sigmoid) part
@@ -52,10 +54,9 @@ The following configuration states can be used
 
 If none of these flags are provided, the full CfC model is used
 
-## Example
+### Example
 
 ```
-
 from cfc_model.dense_models import SequentialModel
 X = np.array([[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 1, 0, 0],
               [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 0, 1, 0]])
@@ -71,12 +72,13 @@ y_pred = model.predict([1, 1, 0, 1]) # y_pred equals 0
 
 
 ## Cite
-
-```@article{hasani_closed-form_2022,
+```
+@article{hasani_closed-form_2022,
 	title = {Closed-form continuous-time neural networks},
 	journal = {Nature Machine Intelligence},
-	author = {Hasani, Ramin and Lechner, Mathias and Amini, Alexander and Liebenwein, Lucas and Ray, Aaron and Tschaikowski, Max and Teschl, Gerald and Rus, Daniela},
-  issn = {2522-5839},
+	author = {Hasani, Ramin and Lechner, Mathias and Amini, Alexander and Liebenwein, Lucas and Ray, Aaron and Tschaikowski, Max and Teschl, Gerald and 	    Rus, Daniela},
+	issn = {2522-5839},
 	month = nov,
-	year = {2022},
-}
+	year = {2022}
+
+```
