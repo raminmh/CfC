@@ -24,17 +24,17 @@ class CfcCell(tf.keras.layers.Layer):
         else:
             input_dim = input_shape[-1]
 
-        if self.hparams["backbone_activation"] == "silu":
+        if self.hparams.get("backbone_activation") == "silu":
             backbone_activation = tf.nn.silu
-        elif self.hparams["backbone_activation"] == "relu":
+        elif self.hparams.get("backbone_activation") == "relu":
             backbone_activation = tf.nn.relu
-        elif self.hparams["backbone_activation"] == "tanh":
+        elif self.hparams.get("backbone_activation") == "tanh":
             backbone_activation = tf.nn.tanh
-        elif self.hparams["backbone_activation"] == "gelu":
+        elif self.hparams.get("backbone_activation") == "gelu":
             backbone_activation = tf.nn.gelu
-        elif self.hparams["backbone_activation"] == "lecun":
+        elif self.hparams.get("backbone_activation") == "lecun":
             backbone_activation = lecun_tanh
-        elif self.hparams["backbone_activation"] == "softplus":
+        elif self.hparams.get("backbone_activation") == "softplus":
             backbone_activation = tf.nn.softplus
         else:
             raise ValueError("Unknown backbone activation")
