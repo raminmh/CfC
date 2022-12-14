@@ -44,6 +44,22 @@ class TestDenseModel(unittest.TestCase):
         model = SequentialModel()
         model.fit(X, y, config={'use_ltc':True, 'epochs':5})
 
+    def test_sine_predict_minimal(self):
+        # Predict sine direction, pad_size = 10
+        X = np.array(
+            [[ii * math.sin((ii + i) / 10) + (random.random() - 0.5) * 20 for i in range(10)] for ii in range(100)])
+        y = np.array([int(math.cos((ii + 11) / 10) >= 0) for ii in range(100)])
+        model = SequentialModel()
+        model.fit(X, y, config={'minimal':True, 'epochs':5})
+
+    def test_sine_predict_no_gate(self):
+        # Predict sine direction, pad_size = 10
+        X = np.array(
+            [[ii * math.sin((ii + i) / 10) + (random.random() - 0.5) * 20 for i in range(10)] for ii in range(100)])
+        y = np.array([int(math.cos((ii + 11) / 10) >= 0) for ii in range(100)])
+        model = SequentialModel()
+        model.fit(X, y, config={'no_gate':True, 'epochs':5})
+
     def test_fit_predict(self):
 
         # Problem: Do the events sum to 2?
