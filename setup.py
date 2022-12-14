@@ -3,26 +3,6 @@ import setuptools
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
-
-    CLASSIFIERS = """\
-Development Status :: 5 - Production/Stable
-Intended Audience :: Science/Research
-Intended Audience :: Developers
-License :: OSI Approved :: BSD License
-Programming Language :: C
-Programming Language :: Python
-Programming Language :: Python :: 3
-Programming Language :: Python :: 3.8
-Programming Language :: Python :: 3.9
-Programming Language :: Python :: 3.10
-Topic :: Software Development :: Libraries
-Topic :: Scientific/Engineering
-Operating System :: Microsoft :: Windows
-Operating System :: POSIX :: Linux
-Operating System :: POSIX
-Operating System :: Unix
-Operating System :: MacOS
-"""
     
 setup(
     name='cfc_model',
@@ -38,7 +18,7 @@ setup(
     
     packages=setuptools.find_packages(),
     include_package_data=True,
-    license='Apache'
+    license='Apache',s
 
     classifiers=[
         'Development Status :: 4 - Beta',
