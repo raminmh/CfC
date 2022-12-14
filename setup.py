@@ -18,7 +18,7 @@ setup(
     
     packages=setuptools.find_packages(),
     include_package_data=True,
-    license='Apache',s
+    license='Apache',
 
     classifiers=[
         'Development Status :: 4 - Beta',
