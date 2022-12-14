@@ -6,7 +6,6 @@ import tensorflow as tf
 import cfc_model.configuration
 import cfc_model.data_types as data_types
 from cfc_model.tf_cfc import CfcCell, MixedCfcCell, LTCCell
-import copy
 
 
 class Args:
@@ -28,30 +27,31 @@ class Args:
         self.no_gate = False
         self.minimal = False
 
-def convert_xy_data_predict(X):
+
+def convert_xy_data_predict(x):
     """
     Converts an x,y format into the cfc expected data structure for the SequentialModel predict method.
     Expects:
-        X (list, np.ndarray):   An n x m matrix where n is a fixed and expected size of
+        x (list, np.ndarray):   An n x m matrix where n is a fixed and expected size of
                                 sequential data and m is the number of samples.
     Returns:
         data (cfc_model.data_types.GenericData): A sequential structure of data expected in the
                                 cfc model.
     """
 
-    assert isinstance(X, (list, np.ndarray)), f'Expected X to be type <np.ndarray>, got {type(X)}.'
+    assert isinstance(x, (list, np.ndarray)), f'Expected X to be type <np.ndarray>, got {type(x)}.'
 
-    if isinstance(X, list):
-        X = np.array(X)
-    if len(X.shape) == 1:
-        X = np.array([X])
+    if isinstance(x, list):
+        x = np.array(x)
+    if len(x.shape) == 1:
+        x = np.array([x])
 
-    assert len(X.shape), f'Expected X.shape to be size 2, got {X.shape}.'
+    assert len(x.shape), f'Expected X.shape to be size 2, got {x.shape}.'
 
     data = data_types.GenericData()
-    data.pad_size = X.shape[1]
-    for i, x in enumerate(X):
-        data.test_events.append(X[i])
+    data.pad_size = x.shape[1]
+    for i, x in enumerate(x):
+        data.test_events.append(x[i])
         data.test_mask.append([True for _ in range(data.pad_size)])
         test_elapsed = [ii / data.pad_size for ii in range(data.pad_size)]
         data.test_elapsed.append(test_elapsed)
@@ -64,12 +64,12 @@ def convert_xy_data_predict(X):
     return data
 
 
-def convert_xy_data_fit(X, y, train_size=0.7):
+def convert_xy_data_fit(x, y, train_size=0.7):
     """
     Converts an x,y format into the cfc expected data structure. Assumes no
     shuffling will be done for sequential data.
     Expects:
-        X (list, np.ndarray):   An n x m matrix where n is a fixed and expected size of
+        x (list, np.ndarray):   An n x m matrix where n is a fixed and expected size of
                                 sequential data and m is the number of samples.
         y (list, np.ndarray):   An 1D array containing the discrete labels associated with
                                 the series.
@@ -78,27 +78,27 @@ def convert_xy_data_fit(X, y, train_size=0.7):
                                 cfc model.
     """
 
-    assert isinstance(X, np.ndarray), f'Expected X to be type <np.ndarray>, got {type(X)}.'
+    assert isinstance(x, np.ndarray), f'Expected X to be type <np.ndarray>, got {type(x)}.'
     assert isinstance(y, (list, np.ndarray)), f'Expected X to be type <np.ndarray> or <list>, got {type(y)}.'
-    assert len(X.shape), f'Expected X.shape to be size 2, got {X.shape}.'
+    assert len(x.shape), f'Expected X.shape to be size 2, got {x.shape}.'
 
     if isinstance(y, list):
         y = np.array(y)
-    if isinstance(X, list):
-        X = np.array(X)
+    if isinstance(x, list):
+        x = np.array(x)
 
     data = data_types.GenericData()
-    data.pad_size = X.shape[1]
-    train_pop_size = int(X.shape[0] * train_size)
-    for i, x in enumerate(X):
+    data.pad_size = x.shape[1]
+    train_pop_size = int(x.shape[0] * train_size)
+    for i, x in enumerate(x):
         if i < train_pop_size:
-            data.train_events.append(X[i])
+            data.train_events.append(x[i])
             data.train_y.append(y[i])
             data.train_mask.append([True for _ in range(data.pad_size)])
             train_elapsed = [ii / data.pad_size for ii in range(data.pad_size)]
             data.train_elapsed.append(train_elapsed)
         else:
-            data.test_events.append(X[i])
+            data.test_events.append(x[i])
             data.test_y.append(y[i])
             data.test_mask.append([True for _ in range(data.pad_size)])
             test_elapsed = [ii / data.pad_size for ii in range(data.pad_size)]
@@ -123,7 +123,7 @@ class SequentialModel:
         self.model = None
         self.fitted = False
 
-    def predict(self, X, data=None):
+    def predict(self, x, data=None):
         """
         Predict a sample label.
         """
@@ -131,8 +131,8 @@ class SequentialModel:
         assert self.fitted, f'fit() must be called prior to predict().'
 
         # Convert X, y data into standard data structure with fixed time interval between samples.
-        if isinstance(data, type(None)) and isinstance(X, (list, np.ndarray)):
-            data = convert_xy_data_predict(X)
+        if isinstance(data, type(None)) and isinstance(x, (list, np.ndarray)):
+            data = convert_xy_data_predict(x)
         if isinstance(data, type(None)):
             raise data_types.MissingDataError
 
@@ -143,10 +143,10 @@ class SequentialModel:
 
         return np.argmax(res)
 
-    def fit(self, X=None, y=None, data=None, config=None):
+    def fit(self, x=None, y=None, data=None, config=None):
         """Train the cfc model"""
 
-        assert isinstance(X, np.ndarray) and isinstance(y, (list, np.ndarray)) or isinstance(data,
+        assert isinstance(x, np.ndarray) and isinstance(y, (list, np.ndarray)) or isinstance(data,
                                                                                              data_types.GenericData), \
             f'Expected X and y or data.'
 
@@ -169,8 +169,8 @@ class SequentialModel:
             cell = CfcCell(units=config["size"], hparams=config)
 
         # Convert X, y data into standard data structure with fixed time interval between samples.
-        if isinstance(data, type(None)) and isinstance(X, np.ndarray) and isinstance(y, (list, np.ndarray)):
-            data = convert_xy_data_fit(X, y)
+        if isinstance(data, type(None)) and isinstance(x, np.ndarray) and isinstance(y, (list, np.ndarray)):
+            data = convert_xy_data_fit(x, y)
         if isinstance(data, type(None)):
             raise data_types.MissingDataError
 
