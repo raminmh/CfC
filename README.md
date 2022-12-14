@@ -35,6 +35,7 @@ conda activate cfc
 ### Example
 ```
 from cfc_model.dense_models import SequentialModel
+import numpy as np
 X = np.array([[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 1, 0, 0],
               [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 0, 1, 0]])
 y = np.array([0, 0, 1, 1, 1, 0, 1, 1])
@@ -57,16 +58,9 @@ If none of these flags are provided, the full CfC model is used
 ### Example
 
 ```
-from cfc_model.dense_models import SequentialModel
-X = np.array([[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 1, 0, 0],
-              [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 0, 1], [1, 0, 1, 0]])
-y = np.array([0, 0, 1, 1, 1, 0, 1, 1])
-model = SequentialModel()
-
 # Runs an LTC with a semi-implicit ODE solver instead of a CfC
 config = {"use_ltc": True}
 model.fit(X, y, config=config)
-y_pred = model.predict([1, 1, 0, 1]) # y_pred equals 0
 ```
 
 
