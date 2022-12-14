@@ -19,9 +19,9 @@ pip install cfc-model
 
 ## Requirements
 
-- Python3.6 or newer
+- Python 3.7 or newer
 - Tensorflow 2.4 or newer
-- Pytorch
+- Pandas
 - Numpy
 
 For a fresh anaconda environment with the required dependencies:
