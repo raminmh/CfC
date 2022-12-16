@@ -1,10 +1,12 @@
 # Closed-form Continuous-time Models
 
-Closed-form Continuous-time Neural Networks (CfCs) are powerful sequential neural information processing units. 
+Closed-form Continuous-time Neural Networks (CfCs) are powerful sequential liquid neural information processing units. 
 
 Paper Open Access: https://www.nature.com/articles/s42256-022-00556-7
 
 Arxiv: https://arxiv.org/abs/2106.13898
+
+A Tutorial on Liquid Neural Networks including Liquid CfCs: https://ncps.readthedocs.io/en/latest/quickstart.html
 
 ## Requirements
 
