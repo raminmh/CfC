@@ -145,7 +145,6 @@ class CfcCell(nn.Module):
         return new_hidden
 
 
-
 class Cfc(nn.Module):
     def __init__(
         self,
@@ -189,6 +188,8 @@ class Cfc(nn.Module):
             time_since_update = torch.zeros(
                 (batch_size, true_in_features), device=device
             )
+        if timespans is None:
+            timespans = torch.ones(x.size(0), x.size(1), device=x.device)
         for t in range(seq_len):
             inputs = x[:, t]
             ts = timespans[:, t].squeeze()
@@ -350,7 +351,6 @@ class LTCCell(nn.Module):
             name="input_b",
             init_value=torch.zeros((self.sensory_size,)),
         )
-
 
     def _sigmoid(self, v_pre, mu, sigma):
         v_pre = torch.unsqueeze(v_pre, -1)  # For broadcasting
